@@ -10,7 +10,7 @@ def setup_gpio(pins):
     for pin in pins:
         GPIO.setup(pin, GPIO.IN)
 
-# ワイヤーが切断されたか確認し、切断順を監視する
+# ワイヤーが切断されたか確認する
 def monitor_wire(wire, stop_event):
     while not stop_event.is_set():
         wire_state = GPIO.input(wire["pin"])
@@ -30,7 +30,6 @@ def monitor_wire(wire, stop_event):
                     break
         time.sleep(0.1)  # 少し待機してから再チェック
 
-# 指定された順番でワイヤーを切断する
 def main():
     wires = [
         {"pin":  4, "connected": False},
