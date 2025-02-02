@@ -10,7 +10,7 @@ def setup_gpio(pins):
     for pin in pins:
         GPIO.setup(pin, GPIO.IN)
 
-# ワイヤーが切断されたか確認する
+# ワイヤーが切断されたか確認
 def monitor_wire(wire, stop_event):
     while not stop_event.is_set():
         wire_state = GPIO.input(wire["pin"])
